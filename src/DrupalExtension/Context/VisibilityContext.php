@@ -69,13 +69,13 @@ class VisibilityContext extends RawMinkContext {
    *
    * @param string $element
    *   Element selector or a string that describes it.
-   * @param \Behat\Mink\Element\NodeElement $node
+   * @param \Behat\Mink\Element\NodeElement|null $node
    *   Node representing the element above, if any.
    *
    * @throws \Behat\Mink\Exception\ExpectationException
    *    Throws exception if element not found.
    */
-  protected function assertElementVisible($element, NodeElement $node) {
+  protected function assertElementVisible($element, ?NodeElement $node) {
     try {
       if ($node && !$node->isVisible()) {
         throw new ExpectationException(sprintf("The element '%s' is not present on the page %s", $element, $this->getSession()->getCurrentUrl()), $this->getSession());
@@ -96,13 +96,13 @@ class VisibilityContext extends RawMinkContext {
    *
    * @param string $element
    *   Element selector or a string that describes it.
-   * @param \Behat\Mink\Element\NodeElement $node
+   * @param \Behat\Mink\Element\NodeElement|null $node
    *   Node representing the element above, if any.
    *
    * @throws \Behat\Mink\Exception\ExpectationException
    *    Throws exception if element is found.
    */
-  protected function assertElementNotVisible($element, NodeElement $node) {
+  protected function assertElementNotVisible($element, ?NodeElement $node) {
     try {
       if ($node && $node->isVisible()) {
         throw new ExpectationException(sprintf("The field '%s' was present on the page %s and was not supposed to be", $element, $this->getSession()->getCurrentUrl()), $this->getSession());
